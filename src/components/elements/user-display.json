@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_user_displays",
+  "info": {
+    "displayName": "UserDisplay"
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
