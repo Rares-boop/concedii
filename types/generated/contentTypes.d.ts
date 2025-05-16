@@ -431,6 +431,39 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiLeaveDayLeaveDay extends Struct.CollectionTypeSchema {
+  collectionName: 'leave_days';
+  info: {
+    displayName: 'LeaveDays';
+    pluralName: 'leave-days';
+    singularName: 'leave-day';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    addedAt: Schema.Attribute.Date;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    firstDay: Schema.Attribute.Date;
+    lastDay: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::leave-day.leave-day'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    statusRequest: Schema.Attribute.Enumeration<
+      ['Pending', 'Approved', 'Rejected']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -886,7 +919,6 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -900,6 +932,10 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    leave_days: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::leave-day.leave-day'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -942,6 +978,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
+      'api::leave-day.leave-day': ApiLeaveDayLeaveDay;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

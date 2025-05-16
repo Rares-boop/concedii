@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leave_days",
+  "info": {
+    "singularName": "leave-day",
+    "pluralName": "leave-days",
+    "displayName": "LeaveDays"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstDay": {
+      "type": "date"
+    },
+    "lastDay": {
+      "type": "date"
+    },
+    "addedAt": {
+      "type": "date"
+    },
+    "statusRequest": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Approved",
+        "Rejected"
+      ]
+    }
+  }
+}
