@@ -465,6 +465,37 @@ export interface ApiLeaveDayLeaveDay extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPublicHolidayPublicHoliday
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'public_holidays';
+  info: {
+    description: '';
+    displayName: 'PublicHolidays';
+    pluralName: 'public-holidays';
+    singularName: 'public-holiday';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    holidayName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::public-holiday.public-holiday'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -980,6 +1011,7 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::leave-day.leave-day': ApiLeaveDayLeaveDay;
+      'api::public-holiday.public-holiday': ApiPublicHolidayPublicHoliday;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
