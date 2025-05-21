@@ -434,12 +434,13 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
 export interface ApiLeaveDayLeaveDay extends Struct.CollectionTypeSchema {
   collectionName: 'leave_days';
   info: {
+    description: '';
     displayName: 'LeaveDays';
     pluralName: 'leave-days';
     singularName: 'leave-day';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     addedAt: Schema.Attribute.Date;

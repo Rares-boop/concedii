@@ -4,10 +4,11 @@
   "info": {
     "singularName": "leave-day",
     "pluralName": "leave-days",
-    "displayName": "LeaveDays"
+    "displayName": "LeaveDays",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "firstDay": {
