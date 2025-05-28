@@ -16,6 +16,10 @@
     },
     "date": {
       "type": "date"
+    },
+    "recurring": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

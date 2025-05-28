@@ -490,6 +490,7 @@ export interface ApiPublicHolidayPublicHoliday
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    recurring: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
